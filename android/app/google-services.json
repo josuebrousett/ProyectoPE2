@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "711229338686",
+    "project_id": "proyecto-pe-deb7c",
+    "storage_bucket": "proyecto-pe-deb7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711229338686:android:8897625380c36f95b20d6f",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_pe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711229338686-bgom9qg7k08hubp6a91er1p8vk05ng9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4QBFXKzKkKRCEKJ5IANwkbCEZONDF3As"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711229338686-bgom9qg7k08hubp6a91er1p8vk05ng9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
