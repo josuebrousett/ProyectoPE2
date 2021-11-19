@@ -22,6 +22,13 @@ class PedidosController extends GetxController{
     super.dispose();
   }
 
+  // void pedidosregister() async{
+  //   Future.delayed(Duration(seconds: 2),
+  //     (){
+  //       Get.toNamed('/Pedido');
+  //     },
+  //   );
+  // }
   // void register() async{
   //   final User user = (await _auth.createUserWithEmailAndPassword(
   //     ubicacion : ubicacionController.text, 

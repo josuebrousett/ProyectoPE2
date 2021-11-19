@@ -20,6 +20,19 @@ class RegisterPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: 100,
+                    ),
+                    Container(
+                       child: const Text(
+                        'REGISTRARSE',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      alignment: Alignment.center,
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
                     TextFormField(
                       controller: controller.emailController,
                       decoration: const InputDecoration(labelText: 'Email'),
@@ -61,7 +74,7 @@ class RegisterPage extends StatelessWidget {
                       child: Text(controller.success == null
                         ? ''
                         : (controller.success
-                            ? 'Registrado Exitosamente' + controller.userEmail
+                            ? '' + controller.userEmail
                             : 'Registro Fallido'),
                   ),
                 )

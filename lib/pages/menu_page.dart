@@ -6,6 +6,7 @@ import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:proyecto_pe/controller/login_controller.dart';
 
+
 import '../home.dart';
 
 
@@ -48,12 +49,50 @@ class _AuthState extends State<MenuPage>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                       child: const Text(
+                        'VERIFICACION DE HUELLA',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      alignment: Alignment.center,
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
             IconButton(icon:Icon(Icons.fingerprint,size: 50,), onPressed: _startAuth,iconSize: 60,),
             SizedBox(height: 15),
             Text('Huella dactilar'),
+
+            // Container(
+            //           padding: const EdgeInsets.only(top:16.0),
+            //           alignment: Alignment.center, 
+            //           // ignore: deprecated_member_use
+            //           child: RaisedButton(
+            //             child: Text('Registro'), 
+            //             onPressed: ()async{
+            //              _.pedidosregister();
+            //             },
+            //           ),
+            //         ),
           ],
         ),
-      )
+        
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items:[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.verified_user_outlined),
+            label: 'Menu'
+          ),
+           BottomNavigationBarItem(
+            icon: Icon(Icons.checklist_rounded),
+            label: 'Pedidos'
+          ),
+        ]
+      ),
     );
   }
 

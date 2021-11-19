@@ -31,7 +31,7 @@ class RegisterController extends GetxController{
       print('Registro Exitoso');
       Future.delayed(Duration(seconds: 2),
       (){
-        Get.toNamed('/Menupage');
+        Get.toNamed('/Pedido');
       },
       );
     }

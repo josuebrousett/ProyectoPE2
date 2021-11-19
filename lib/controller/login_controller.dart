@@ -22,7 +22,7 @@ class LoginController extends GetxController{
       Future.delayed(
         Duration(seconds: 2),
         (){
-          Get.toNamed("/Menupage");
+          Get.toNamed("/Pedido");
         }
       );
     }
@@ -66,7 +66,7 @@ class LoginController extends GetxController{
     Future.delayed(
       Duration(seconds: 2),
       (){
-        Get.toNamed("/Menupage");
+        Get.toNamed("/Pedido");
       },
     );
     
@@ -79,5 +79,13 @@ class LoginController extends GetxController{
     }
 
   }
+
+  // void pedidosregister() async{
+  //   Future.delayed(Duration(seconds: 2),
+  //     (){
+  //       Get.toNamed('/Pedido');
+  //     },
+  //   );
+  // }
    
 }

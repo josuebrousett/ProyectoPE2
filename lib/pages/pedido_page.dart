@@ -48,7 +48,9 @@ class PedidoPage extends StatelessWidget {
                         return null;
                       },  
                     ),
-
+                    SizedBox(
+                      height: 40,
+                    ),
                     Container(
                       child: new Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -61,9 +63,7 @@ class PedidoPage extends StatelessWidget {
                                 color: Colors.green,
                                 textColor: Colors.white,
                                 child: Text('Registrar'),
-                                onPressed: ()async{
-                                //  _.register();
-                                },
+                                onPressed: ()=> Get.toNamed('/Menupage'),
                               ),
 
                               // ignore: deprecated_member_use
@@ -104,7 +104,7 @@ class PedidoPage extends StatelessWidget {
             label: 'Menu'
           ),
            BottomNavigationBarItem(
-            icon: Icon(Icons.settings_input_component_sharp),
+            icon: Icon(Icons.checklist_rounded),
             label: 'Pedidos'
           ),
         ]
