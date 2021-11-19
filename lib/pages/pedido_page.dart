@@ -1,12 +1,41 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_pe/controller/pedidos_controller.dart';
 
 class PedidoPage extends StatelessWidget {
- final controller= Get.put(PedidosController());
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: LocationPedidoPage(),
+    );
+  }
+
+}
+
+class LocationPedidoPage extends StatefulWidget {
+  @override
+  _LocationPedidoPage createState() => _LocationPedidoPage();
+}
+
+class _LocationPedidoPage extends State<LocationPedidoPage>{
+  final controller = Get.put(PedidosController());
+  var locationMessage = "";
+
+
+ void getCurrentLocation() async {
+   var position = await Geolocator
+       .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+   var lastPosition = await Geolocator.getLastKnownPosition();
+   print(lastPosition);
+
+   setState(() {
+     locationMessage =  "$position";
+   });
+ }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,15 +51,17 @@ class PedidoPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextFormField(
-                      controller: controller.ubicacionController,
-                      decoration: const InputDecoration(labelText: 'Ubicación'),
-                      validator: (String? value){
-                        if(value!.isEmpty) return 'Seleccione su ubicación';
-                        return null;
-                      },  
+                    Text(
+                      locationMessage
                     ),
-
+                    FlatButton(
+                        onPressed: () {getCurrentLocation();},
+                        color: Colors.blue[800],
+                        child: Text("Obtener Ubicacion",
+                            style: TextStyle(
+                              color: Colors.white,
+                            )),
+                    ),
                     TextFormField(
                       controller: controller.pedidoController,
                       decoration: const InputDecoration(labelText: 'Pedido'),

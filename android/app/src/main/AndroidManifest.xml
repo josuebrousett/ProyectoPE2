@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.proyecto_pe">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS.COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+
    <application
         android:label="proyecto_pe"
         android:icon="@mipmap/ic_launcher">
