@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_pe/controller/register_controller.dart';
 
@@ -30,6 +31,10 @@ class RegisterPage extends StatelessWidget {
 
                     TextFormField(
                       controller: controller.passwordController,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
                       decoration: const InputDecoration(labelText: 'Contraseña'),
                       validator: (String? value){
                         if(value!.isEmpty) return 'Por favor, Ingrese su contraseña';
@@ -52,6 +57,7 @@ class RegisterPage extends StatelessWidget {
 
                     Container(
                       alignment: Alignment.center,
+                      // ignore: unnecessary_null_comparison
                       child: Text(controller.success == null
                         ? ''
                         : (controller.success

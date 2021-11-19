@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     Container(
                        child: const Text(
-                        'Login Page',
+                        'INICIAR SESION',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       alignment: Alignment.center,
@@ -52,7 +52,7 @@ class LoginPage extends StatelessWidget {
                       ],
                       decoration: const InputDecoration(labelText: 'Contraseña'),
                       validator: (String? value){
-                        if(value!.isEmpty) return 'Por favor, Ingrese su conatraseña';
+                        if(value!.isEmpty) return 'Por favor, Ingrese su contraseña';
                         return null;
                       },
                       obscureText: true,

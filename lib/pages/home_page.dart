@@ -12,13 +12,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Login',
+          'Login - ValiDely',
           style: TextStyle(fontSize: 12),
         ),
       ),
       body:Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Image.asset('images/imgdely.jpg',
+            height: 300.0,
+          ),
           SizedBox(
             height: 100,
           ),
