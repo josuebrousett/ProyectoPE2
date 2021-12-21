@@ -4,7 +4,6 @@ import 'package:proyecto_pe/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:proyecto_pe/routes/my_routes.dart';
 
-
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

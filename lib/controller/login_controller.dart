@@ -17,14 +17,27 @@ class LoginController extends GetxController{
         password: passwordController.text)
         )
         .user;
+        if(user.email=='josuebrousett@gmail.com'){
+           print(user.email); //ADMIN
+           Future.delayed(
+          Duration(seconds: 2),
+          (){
+            Get.toNamed("/Menupage");
+            }
+          );
+        }
+        else{// USERS
+          Future.delayed(
+          Duration(seconds: 2),
+          (){
+            Get.toNamed("/Pedido");
+            }
+          );
+        }
+     
       Get.snackbar('Hola', 'Sesion Iniciada correctamente');
       print("todo bien hasta ahora");
-      Future.delayed(
-        Duration(seconds: 2),
-        (){
-          Get.toNamed("/Pedido");
-        }
-      );
+      
     }
     catch(e){
       Get.snackbar('Error', 'No se puede ingresar', snackPosition: SnackPosition.BOTTOM);

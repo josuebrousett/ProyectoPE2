@@ -11,5 +11,6 @@ routes()=>[
   GetPage(name: "/Pedido", page:()=> PedidoPage()),
   GetPage(name: "/loginpage", page:()=> LoginPage()),
   GetPage(name: "/Menupage", page:()=> MenuPage(), transition: Transition.zoom),
+
   
 ];
