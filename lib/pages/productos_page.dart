@@ -56,10 +56,10 @@ class _LocationPedidoPage extends State<ProductosPage> {
                 AsyncSnapshot<QuerySnapshot> snapshot,
               ) {
                 if (snapshot.hasError) {
-                  return Text('Algo no existe');
+                  return const Text('Algo no existe');
                 }
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text('Cargando');
+                  return const Text('Cargando');
                 }
                 final data = snapshot.requireData;
                 return ListView.builder(
@@ -68,7 +68,6 @@ class _LocationPedidoPage extends State<ProductosPage> {
                     var white;
                     return Container(
                       height: 50,
-                      color: Colors.amber[colorCodes[index]],
                       child: Center(
                           child: Text('Nombre ${data.docs[index]['nombre']}')),
                     );
