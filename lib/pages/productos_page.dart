@@ -62,14 +62,16 @@ class _LocationPedidoPage extends State<ProductosPage> {
                   return const Text('Cargando');
                 }
                 final data = snapshot.requireData;
+                print(data.size);
                 return ListView.builder(
                   itemCount: data.size,
+
                   itemBuilder: (context, index) {
                     var white;
                     return Container(
                       height: 50,
                       child: Center(
-                          child: Text('Nombre ${data.docs[index]['nombre']}')),
+                          child: Text(' ${data.docs[index]['nombre']}')),
                     );
                     //return Text('Nombre ${data.docs[index]['nombre']}');
                   },

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_pe/controller/pedidos_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PedidoPage extends StatelessWidget {
   @override
@@ -19,6 +20,13 @@ class LocationPedidoPage extends StatefulWidget {
 }
 
 class _LocationPedidoPage extends State<LocationPedidoPage> {
+   // ignore: deprecated_member_use
+   final db =Firestore.instance;
+   final _formKey = GlobalKey<FormState>();
+   String pedido='';
+   String descripcion='';
+   String id='';
+
   int _paginaActual = 0;
 
   final controller = Get.put(PedidosController());
@@ -43,6 +51,7 @@ class _LocationPedidoPage extends State<LocationPedidoPage> {
     return GetBuilder<PedidosController>(
       builder: (_) {
         return Form(
+            key: _formKey,
             child: Card(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -63,10 +72,10 @@ class _LocationPedidoPage extends State<LocationPedidoPage> {
                 TextFormField(
                   controller: controller.pedidoController,
                   decoration: const InputDecoration(labelText: 'Pedido'),
-                  validator: (String? value) {
+                  validator: (value) {
                     if (value!.isEmpty) return 'Ingrese un pedido';
-                    return null;
                   },
+                  onSaved: (value)=> pedido=value!,
                 ),
                 TextFormField(
                   controller: controller.descripcionController,
@@ -75,6 +84,7 @@ class _LocationPedidoPage extends State<LocationPedidoPage> {
                     if (value!.isEmpty) return 'Ingrese una descripción';
                     return null;
                   },
+                  onSaved: (value)=> descripcion=value!,
                 ),
                 SizedBox(
                   height: 40,
@@ -91,7 +101,10 @@ class _LocationPedidoPage extends State<LocationPedidoPage> {
                             color: Colors.green,
                             textColor: Colors.white,
                             child: Text('Registrar'),
-                            onPressed: () => Get.toNamed('/Menupage'),
+                            onPressed: () =>{ 
+                              createPedido(),
+                              Get.toNamed('/Menupage'),
+                            }
                           ),
 
                           // ignore: deprecated_member_use
@@ -127,5 +140,17 @@ class _LocationPedidoPage extends State<LocationPedidoPage> {
     //   BottomNavigationBarItem(
     //       icon: Icon(Icons.checklist_rounded), label: 'Pedidos'),
     // ]),
+  }
+
+  void createPedido() async {
+    if (_formKey.currentState!.validate()){
+      _formKey.currentState!.save();
+      DocumentReference ref= await db.collection('pedidos').add({'pedido': '$pedido', 'descripcion': '$descripcion'});
+      setState(() {
+        // ignore: deprecated_member_use
+        id=ref.documentID;
+        print(ref.documentID);
+      });
+    }
   }
 }
