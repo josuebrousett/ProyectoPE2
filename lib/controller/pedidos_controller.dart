@@ -11,6 +11,7 @@ class PedidosController extends GetxController{
   final ubicacionController = TextEditingController();
   final pedidoController = TextEditingController();
   final descripcionController = TextEditingController();
+  final celularController=TextEditingController();
 
   bool success=true;
   String userEmail='';
@@ -19,6 +20,7 @@ class PedidosController extends GetxController{
     ubicacionController.dispose();
     pedidoController.dispose();
     descripcionController.dispose();
+    celularController.dispose();
     super.dispose();
   }
 

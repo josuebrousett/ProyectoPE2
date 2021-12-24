@@ -25,6 +25,7 @@ class _LocationPedidoPage extends State<LocationPedidoPage> {
    final _formKey = GlobalKey<FormState>();
    String pedido='';
    String descripcion='';
+   String celular='';
    String id='';
 
   int _paginaActual = 0;
@@ -86,6 +87,16 @@ class _LocationPedidoPage extends State<LocationPedidoPage> {
                   },
                   onSaved: (value)=> descripcion=value!,
                 ),
+                 TextFormField(
+                  controller: controller.celularController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: 'N° celular'),
+                  validator: (String? value2) {
+                    if (value2!.isEmpty) return 'Ingrese celular';
+                    return null;
+                  },
+                  onSaved: (value2)=> celular=value2!,
+                ),
                 SizedBox(
                   height: 40,
                 ),
@@ -145,7 +156,8 @@ class _LocationPedidoPage extends State<LocationPedidoPage> {
   void createPedido() async {
     if (_formKey.currentState!.validate()){
       _formKey.currentState!.save();
-      DocumentReference ref= await db.collection('pedidos').add({'pedido': '$pedido', 'descripcion': '$descripcion'});
+      DocumentReference ref= await db.collection('pedidos').add({'pedido': '$pedido', 'descripcion': '$descripcion', 
+        'celular':'$celular','estado':'Por enviar', 'ubicacion':'$locationMessage'});
       setState(() {
         // ignore: deprecated_member_use
         id=ref.documentID;

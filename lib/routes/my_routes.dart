@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:proyecto_pe/pages/admin_page.dart';
 import 'package:proyecto_pe/pages/home_page.dart';
 import 'package:proyecto_pe/pages/login_page.dart';
 import 'package:proyecto_pe/pages/menu_page.dart';
@@ -18,4 +19,5 @@ routes() => [
           page: () => MenuPage(),
           transition: Transition.zoom),
       GetPage(name: "/MenuBar", page: () => MenuBar()),
+      GetPage(name: "/admin", page:() => adminPage()),
     ];
