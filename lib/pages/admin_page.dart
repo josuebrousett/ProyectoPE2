@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong/latlong.dart';
+//import 'package:latlong2/latlong.dart';
 
 class adminPage extends StatefulWidget {
   const adminPage({ Key? key }) : super(key: key);
@@ -98,18 +101,57 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
+    // final lat ='${widget.post!['descripcion']}';
+     final longi = '${widget.post!['ubicacion']}';
+     print("hijos de su madre");
+     print(longi);
+     final latitud=longi.substring(longi.indexOf(':')+2,longi.indexOf(','));
+     final longitud=longi.substring(longi.indexOf("Longitude:")+11,longi.length);
+     final a=double.parse(latitud);
+     final b=double.parse(longitud);
+     print(latitud);
+     print(longitud);
     return Scaffold(
       appBar: AppBar(
         title: Text('Detalle -Pedido'),
       ),
       body: Container(
-        child: Card(
-          child:ListTile(
-            title: Text('${widget.post!['pedido']}'),
-            subtitle:Text('${widget.post!['descripcion']}') ,
-          ),
-        ),
+        child: Column(
+          children: [
+            Flexible(
+              child: Card(
+                child:ListTile(
+                  title: Text('${widget.post!['pedido']}'),
+                  subtitle:Text('${widget.post!['descripcion']}') ,
+                ),
+              ),
+            ),
+            Flexible(
+              child: FlutterMap(
+                  options: MapOptions(
+                    center: LatLng(a, b),
+                    zoom: 13.0,
+                  ),
+                  layers: [
+                    TileLayerOptions(
+                      urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                      subdomains: ['a', 'b', 'c'],
+                    ),
+                    MarkerLayerOptions(
+                      markers:[ 
+                      Marker(
+                        point: LatLng(a, b),
+                        builder: (ctx)=> Icon(Icons.pin_drop),  
+                      ),
+                      ],
+                    ),
+                  ],
+              ),
+            )         
+          ],
+        )
       ),
+     
     );
   }
 }
